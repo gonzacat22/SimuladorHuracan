@@ -1,0 +1,14 @@
+h1{
+    color: orangered;
+    background-color:black;
+    display: inline-block;
+    font-size: 80px;
+    
+}
+
+h2{
+    color:orange;
+    background-color:black;
+    display: inline-block;
+    font-size: 50px;
+}
