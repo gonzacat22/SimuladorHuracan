@@ -16,7 +16,7 @@ const sportswearHuracan = {
 
 }
 
-while(opcionCuota!='X'&& opcionCuota!='x'){
+while(opcionCuota!='X' && opcionCuota!='x'){
     switch (opcionCuota) {
         case '1':
             opcionCuota = 2200;
