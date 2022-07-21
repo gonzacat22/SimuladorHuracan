@@ -1,20 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1er Desafio Javascript</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Tienda Huracan</title>
 </head>
-<body>
-    <h1> 1er Dasafio Entregable Js Coderhouse</h1>
-    <br>
-    <h2>Gonzalo Gerardo Durante</h2>
 
-    <script src="./js/prubasObjetos.js"></script>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="text-center">TIENDA LUMINOSA</h1>
+            <hr>
+        </div>
+    </header>
+    <!-- iNICIO TIENDA -->
+    <section class="store">
+        <div class="container">
+            <div class="items">
+                <div class="row">
+
+                    <div class="col-12 col-md-6">
+                        <div class="item shadow mb-4">
+                            <h3 class="item-title">Short y Camiseta</h3>
+                            <img class="item-image" src="./img/Camiseta y Short .jpeg">
+
+                            <div class="item-details">
+                                <h4 class="item-price">$2300</h4>
+                                <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="item shadow mb-4">
+                            <h3 class="item-title">Camiseta Arquero</h3>
+
+                            <img class="item-image" src="./img/camisetaArquero.jpeg">
+
+                            <div class="item-details">
+                                <h4 class="item-price">$1600</h4>
+                                <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="item shadow mb-4">
+                            <h3 class="item-title">Equipo Gimnasia</h3>
+
+                            <img class="item-image" src="./img/pantalonYCampera.jpeg">
+
+                            <div class="item-details">
+                                <h4 class="item-price">$6900</h4>
+                                <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="item shadow mb-4">
+                            <h3 class="item-title">Short Futbol</h3>
+
+                            <img class="item-image" src="./img/Camiseta y Short .jpeg">
+
+                            <div class="item-details">
+                                <h4 class="item-price">$990</h4>
+                                <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="item shadow mb-4">
+                            <h3 class="item-title">Camiseta Futbol</h3>
+
+                            <img class="item-image" src="./img/camiseta de juego.jpg">
+                            <div class="item-details">
+                                <h4 class="item-price">$1800</h4>
+                                <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="item shadow mb-4">
+                            <h3 class="item-title">Medias De Juego</h3>
+
+                            <img class="item-image" src="./img/mediasHuracan.jpg">
+                            <div class="item-details">
+                                <h4 class="item-price">$590</h4>
+                                <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- TERMINA LA TIENDA -->
+    <!-- iNICIO SECCION DE PAGO -->
+    <section class="shopping-cart">
+        <div class="container">
+            <h1 class="text-center">CARRITO LUMINOSO</h1>
+            <hr>
+            <div class="row">
+                <div class="col-6">
+                    <div class="shopping-cart-header">
+                        <h6>Producto</h6>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="shopping-cart-header">
+                        <h6 class="text-truncate">Precio</h6>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="shopping-cart-header">
+                        <h6>Cantidad</h6>
+                    </div>
+                </div>
+            </div>
+            <!--EMPIEZA CARRITO DE COMPRAS CON ARTICULOS -->
+            <div class="shopping-cart-items shoppingCartItemsContainer">
+                <!-- mAQUETA DE EJEMPLO ELMINAR -->
+                <div class="row shoppingCartItem">
+                    <div class="col-6">
+                        <div class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
+                            <img src='./img/pantalonYCampera.jpeg' class="shopping-cart-image">
+                            <h6 class="shopping-cart-item-title shoppingCartItemTitle text-truncate ml-3 mb-0">Equipo Gimnasia
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="shopping-cart-price d-flex align-items-center h-100 border-bottom pb-2 pt-3">
+                            <p class="item-price mb-0 shoppingCartItemPrice">$6900</p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div
+                            class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
+                            <input class="shopping-cart-quantity-input shoppingCartItemQuantity" type="number"
+                                value="1">
+                            <button class="btn btn-danger buttonDelete" type="button">X</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- tERMINA EL EJEMPLO DE LA MAQUETA -->
+            </div>
+            <!--FIN DE CARRITO DE COMPRAS -->
+
+            <!-- INICIO DEL TOTAL -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="shopping-cart-total d-flex align-items-center">
+                        <p class="mb-0">Total</p>
+                        <p class="ml-4 mb-0 shoppingCartTotal">$0</p>
+                        <div class="toast ml-auto bg-info" role="alert" aria-live="assertive" aria-atomic="true"
+                            data-delay="2000">
+                            <div class="toast-header">
+                                <span>✅</span>
+                                <strong class="mr-auto ml-1 text-secondary">Elemento en el carrito</strong>
+                                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="toast-body text-white">
+                                Se aumentó correctamente la cantidad
+                            </div>
+                        </div>
+                        <button class="btn btn-success ml-auto comprarButton" type="button" data-toggle="modal"
+                            data-target="#comprarModal">Comprar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FIN DEL TOTAL -->
+
+            <!-- INICIO COMPRA MODAL -->
+            <div class="modal fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="comprarModalLabel">Gracias por su compra</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Pronto recibirá su pedido</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN DE COMPRA MODAL -->
+
+
+        </div>
+
+    </section>
+    <!-- FINAL DEL CARRITO DE COMPRAS -->
+
+
+    <!-- PRINCIPIO DEL FOOTER -->
+    <footer class="bg-dark p-3 mt-5">
+        <p class="text-center m-0 text-muted">TIENDA LUMINOSA</p>
+    </footer>
+    <!-- FIN FOOTER -->
+
+    <!-- SCRIPTS -->
+    <!--<script src="./js/prubasObjetos.js"></script>-->
     <!--<scrip src="./js/arrayObjeto.js"</script>-->
     <!--<script src="./js/scriptprimer.js"></script>-->
     <!--<script src="./js/script.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
+    
 </body>
+
 </html>
