@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+    
     
     <header>
         <div class="container">
@@ -33,7 +33,7 @@
 
                             <div class="item-details">
                                 <h4 class="item-price">$ 2200</h4>
-                                <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+                                <button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
 
                             <div class="item-details">
                                 <h4 class="item-price">$ 1600</h4>
-                                <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+                                <button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
 
                             <div class="item-details">
                                 <h4 class="item-price">$ 1200</h4>
-                                <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+                                <button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
 
                             <div class="item-details">
                                 <h4 class="item-price">$ 900</h4>
-                                <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+                                <button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                             <img class="item-image" src="./img/huracanCampera.jpg">
                             <div class="item-details">
                                 <h4 class="item-price">$ 2500</h4>
-                                <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+                                <button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                             <img class="item-image" src="./img/huracanPantalonLargo.jpg">
                             <div class="item-details">
                                 <h4 class="item-price">$ 2400</h4>
-                                <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
+                                <button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
                     </div>
@@ -108,32 +108,32 @@
     <!-- COMIENZA EL CARRITO -->
     <section class="shopping-cart">
         <div class="container">
-            <h1 class="text-center">TU COMPRA</h1>
+            <h1 class="text-center">TU COMPRA LUMINOSA</h1>
             <hr>
             <div class="row">
                 <div class="col-6">
-                    <div class="shopping-cart-header">
+                    <div class="tarjetaTiendaHeader">
                         <h6>Producto</h6>
                     </div>
                 </div>
                 <div class="col-2">
-                    <div class="shopping-cart-header">
+                    <div class="tarjetaTiendaHeader">
                         <h6 class="text-truncate">Precio</h6>
                     </div>
                     
                 </div>
                 <div class="col-4">
-                    <div class="shopping-cart-header">
+                    <div class="tarjetaTiendaHeader">
                         <h6>Cantidad</h6>
                     </div>
                 </div>
             </div>
             <!-- ? COMIENZA LOS ITEMS DEL CARRITO -->
-            <div class="shopping-cart-items shoppingCartItemsContainer">
+            <div class="shopping-cart-items contenedorDeItems">
             </div>
             <!-- ? TERMINAN LOS ITEMS DEL CARRITO -->
 
-            <!-- AQUI COMIENZA EL TOTAL  -->
+            <!-- AQUI COMIENZA EL TOTAL -->
             <div class="row">
                 <div class="col-12">
                     <div class="shopping-cart-total d-flex align-items-center">
@@ -143,7 +143,7 @@
                             data-delay="2000">
                             <div class="toast-header">
                                 <span>✅</span>
-                                <strong class="mr-auto ml-1 text-secondary">Elemento en el carrito</strong>
+                                <strong class="mr-auto ml-1 text-secondary">Más elementos al carrito</strong>
                                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -152,7 +152,7 @@
                                 Se aumentó correctamente la cantidad
                             </div>
                         </div>
-                        <button class="btn btn-success ml-auto comprarButton" type="button" data-toggle="modal"
+                        <button class="btn btn-success ml-auto botonComprar" type="button" data-toggle="modal"
                             data-target="#comprarModal">Comprar</button>
                     </div>
                 </div>
