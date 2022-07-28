@@ -42,7 +42,7 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
   }
 
   const shoppingCartRow = document.createElement('div');
-  const shoppingCartContent = `
+  /*const shoppingCartContent = `
   <div class="row shoppingCartItem">
         <div class="col-6">
             <div class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
@@ -63,11 +63,11 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
                 <button class="btn btn-danger buttonDelete" type="button">X</button>
             </div>
         </div>
-    </div>`;
-  shoppingCartRow.innerHTML = shoppingCartContent;
+    </div>`;*/
+  shoppingCartRow.innerHTML = shoppingCartContent;//limpio el html
   contenedorDeItems.append(shoppingCartRow);
 
-  shoppingCartRow
+  shoppingCartRow//borrar el carrito
     .querySelector('.buttonDelete')
     .addEventListener('click', removeShoppingCartItem);
 
