@@ -12,6 +12,60 @@ const contenedorDeItems = document.querySelector(
   '.contenedorDeItems'
 );
 
+
+const socios = [{
+  nombre: 'Gonzalo',
+  mail: 'gonzalodurante294@gmail.com',
+  pass: 'gonza22'
+},
+{
+  nombre: 'Juan Ignacio',
+  mail: 'juanignacio294@gmail.com',
+  pass: 'juan22'
+},
+{
+  nombre: 'Pedro',
+  mail: 'lpedro294@gmail.com',
+  pass: 'pedro22'
+}]
+
+
+
+//productos para no hardcodearlos
+const indumentaria = [{
+  tituloItem: 'Cuota Social',
+  itemPrice: '$2200',
+  itemImage: './img/huracanCuotaSocial.jpg',
+  btnAgregaCarrito: 'Añadir Carrito'
+},{
+  tituloItem: 'Camiseta de Juego',
+  itemPrice: '$1600',
+  itemImage: './img/huracanCamisetaJuego.jpg',
+  btnAgregaCarrito: 'Añadir Carrito'
+},{
+  tituloItem: 'Pantalon de Juego',
+  itemPrice: '$1200',
+  itemImage: './img/huracanPantalonJuego.jpg',
+  btnAgregaCarrito: 'Añadir Carrito'
+},{
+  tituloItem: 'Medias de juego',
+  itemPrice: '$900',
+  itemImage: './img/huracanMediasJuego.jpg',
+  btnAgregaCarrito: 'Añadir Carrito'
+},{
+  tituloItem: 'Campera',
+  itemPrice: '$2500',
+  itemImage: './img/huracanCampera.jpg',
+  btnAgregaCarrito: 'Añadir Carrito'
+},{
+  tituloItem: 'Pantalon Largo',
+  itemPrice: '$2400',
+  itemImage: './img/huracanPantalonLargo.jpg',
+  btnAgregaCarrito: 'Añadir Carrito'
+}]
+
+
+
 function agregaCarritoClickeando(event) {
   const boton = event.target;
   const item = boton.closest('.item');
@@ -42,6 +96,10 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
   }
 
   const shoppingCartRow = document.createElement('div');
+  
+
+
+
   /*const shoppingCartContent = `
   <div class="row shoppingCartItem">
         <div class="col-6">
