@@ -1,17 +1,5 @@
 
-//vienen todas las tarjetas que tienen añadir carrito
-const traeTodosLosBotones = document.querySelectorAll('.agregaCarrito');
-traeTodosLosBotones.forEach((agregaCarritoBoton) => {
-  agregaCarritoBoton.addEventListener('click', agregaCarritoClickeando);
-});
-
-const botonComprar = document.querySelector('.botonComprar');
-botonComprar.addEventListener('click', botonComprarClick);
-
-const contenedorDeItems = document.querySelector(
-  '.contenedorDeItems'
-);
-
+//constantes para socios login
 
 const socios = [{
   nombre: 'Gonzalo',
@@ -28,8 +16,6 @@ const socios = [{
   mail: 'lpedro294@gmail.com',
   pass: 'pedro22'
 }]
-
-
 
 //productos para no hardcodearlos
 const indumentaria = [{
@@ -70,7 +56,7 @@ const contentIndumentaria = document.querySelector('#contentIndumentaria')
 indumentaria.forEach(item => {
   //entendi que debia solo traer un div y luego dinamicamente js agrega todos
   contentIndumentaria.innerHTML += `
-  <div class="col-12 col-md-6">
+                      <div class="col-12 col-md-6">
                         <div class="item shadow mb-4">
                             <h3 class="item-title">${item.tituloItem}</h3>
                             <img class="item-image" src=${item.itemImage}>
@@ -80,7 +66,7 @@ indumentaria.forEach(item => {
                                 <button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
-                    </div>`
+                      </div>`
 
 })
 
@@ -92,45 +78,45 @@ traeTodosLosBotones.forEach((agregaCarritoBoton) => {
 const botonComprar = document.querySelector('.botonComprar');
 botonComprar.addEventListener('click', botonComprarClick);
 
-const contenedorDeItems = document.querySelector('.contenedorDeItems');
+const contenedorDeItems = document.querySelector(
+  '.contenedorDeItems'
+);
 
+//aca los agrega al carrito
 
+function agregaCarritoClickeando(event) {
+  const boton = event.target;
+  const item = boton.closest('.item');
 
-// function agregaCarritoClickeando(event) {
-//   const boton = event.target;
-//   const item = boton.closest('.item');
+  const tituloItem = item.querySelector('.item-title').textContent;
+  const itemPrice = item.querySelector('.item-price').textContent;
+  const itemImage = item.querySelector('.item-image').src;
 
-//   const tituloItem = item.querySelector('.item-title').textContent;
-//   const itemPrice = item.querySelector('.item-price').textContent;
-//   const itemImage = item.querySelector('.item-image').src;
+  addItemToShoppingCart(tituloItem, itemPrice, itemImage);
+}
 
-//   addItemToShoppingCart(tituloItem, itemPrice, itemImage);
-// }
-
-// function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
-//   const elementsTitle = contenedorDeItems.getElementsByClassName(
-//     'shoppingCartItemTitle'
-//   );
-//   for (let i = 0; i < elementsTitle.length; i++) {
-//     if (elementsTitle[i].innerText === itemTitle) {
-//       let elementQuantity = elementsTitle[
-//         i
-//       ].parentElement.parentElement.parentElement.querySelector(
-//         '.shoppingCartItemQuantity'
-//       );
-//       elementQuantity.value++;
-//       $('.toast').toast('show');
-//       updateShoppingCartTotal();
-//       return;
-//     }
-//   }
+function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
+  const elementsTitle = contenedorDeItems.getElementsByClassName(
+    'shoppingCartItemTitle'
+  );
+  for (let i = 0; i < elementsTitle.length; i++) {
+    if (elementsTitle[i].innerText === itemTitle) {
+      let elementQuantity = elementsTitle[
+        i
+      ].parentElement.parentElement.parentElement.querySelector(
+        '.shoppingCartItemQuantity'
+      );
+      elementQuantity.value++;
+      $('.toast').toast('show');
+      updateShoppingCartTotal();
+      return;
+    }
+  }
 
 const shoppingCartRow = document.createElement('div');
 
 
-
-
-/*const shoppingCartContent = `
+const shoppingCartContent = `
 <div class="row shoppingCartItem">
       <div class="col-6">
           <div class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
@@ -151,7 +137,7 @@ const shoppingCartRow = document.createElement('div');
               <button class="btn btn-danger buttonDelete" type="button">X</button>
           </div>
       </div>
-  </div>`;*/
+  </div>`;
 shoppingCartRow.innerHTML = shoppingCartContent;//limpio el html
 contenedorDeItems.append(shoppingCartRow);
 
