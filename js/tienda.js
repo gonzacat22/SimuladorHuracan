@@ -69,15 +69,15 @@ indumentaria.forEach(item => {
                       </div>`
 
 })
-
+//los botones "agregar carrito"
 const traeTodosLosBotones = document.querySelectorAll('.agregaCarrito');
 traeTodosLosBotones.forEach((agregaCarritoBoton) => {
   agregaCarritoBoton.addEventListener('click', agregaCarritoClickeando);
 });
-
+//boton de comprar abajo
 const botonComprar = document.querySelector('.botonComprar');
 botonComprar.addEventListener('click', botonComprarClick);
-
+//esta lleva los items al carrito
 const contenedorDeItems = document.querySelector(
   '.contenedorDeItems'
 );
