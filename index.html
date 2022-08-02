@@ -13,24 +13,58 @@
 </head>
 
 <body>
+
     
     
     <header>
-        <div class="container">
-            <h1 class="text-center">TIENDA LUMINOSA</h1>
-            <hr>
-        </div>
-        
+        <h1 class="text-center">TIENDA ONLINE LUMINOSA</h1>
+        <img src="./img/logoHuracanNegroEstrella.png" alt="logo" width="60"></a>
+        <hr>
+
+        <nav >
+            
+            <form id="usuarioFormulario" action="">
+                
+                <label for="nombre">Nombre</label>
+                <input type="text" id="name" required/>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" required/>
+                <label for="password">Password</label>
+                <input type="password" id="password" required/>
+                <div>
+                  <label for="esSocio">¿Es Socio?</label>
+                  <input type="checkbox" id="esSocio" />
+                  <label for="noSocio">¿Es Socio?</label>
+                  <input type="checkbox" id="noSocio" />
+                  
+                </div>
+                <button type="submit">Guardar</button>
+              </form>
+            
+              <button id="mostrandoInfoGuardada">Mostrar Info guardada</button>
+              <button id="borrarInfoGuardada">Borrar Info</button>
+              <div id="infoContenedor"></div>
+
+        </nav>
+                 
     </header>
 
 
-    <!-- INICIO TARJETAS TIENDA-->
+
+
+
+
+
+    <!-- INICIO TARJETAS TIENDA PARA NO SOCIOS SOLO DEBERIA QUEDAR EL NAVBAR CON LAS TARJETAS SIN EL PRECIO Y EL BOTON AÑADIR CARRITO Y TODO EL CARRITO -->
+    <div class="container">
+        
+        
+    </div>
     <section class="store">
         <div class="container">
             <div class="items">
+                <!--id del contenedor de las tarjetas-->
                 <div class="row" id="contentIndumentaria">
-
-                    
                 </div>
             </div>
         </div>

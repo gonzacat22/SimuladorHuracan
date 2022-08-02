@@ -1,20 +1,20 @@
 
-//constantes para socios login
+//constantes para socios formulario
 
 const socios = [{
   nombre: 'Gonzalo',
   mail: 'gonzalodurante294@gmail.com',
-  pass: 'gonza22'
+  password: 'gonza22'
 },
 {
   nombre: 'Juan Ignacio',
   mail: 'juanignacio294@gmail.com',
-  pass: 'juan22'
+  password: 'juan22'
 },
 {
   nombre: 'Pedro',
-  mail: 'lpedro294@gmail.com',
-  pass: 'pedro22'
+  mail: 'pedro294@gmail.com',
+  password: 'pedro22'
 }]
 
 //productos para no hardcodearlos
@@ -49,6 +49,124 @@ const indumentaria = [{
   itemImage: './img/huracanPantalonLargo.jpg',
   btnAgregaCarrito: 'Añadir Carrito'
 }]
+// guardo el formulario
+const formulario = document.getElementById('mostrandoInfoGuardada'); 
+// botón para mostrar informacion
+const botonMostrar = document.getElementById('mostrandoInfoGuardada'); 
+// botón para borrar informacion
+const botonBorrar = document.getElementById('borrarInfoGuardada'); 
+// guardo el elemento que va a contener informacion de los socios
+const infoContenedor = document.getElementById('infoContenedo'); 
+
+// paro el comportamiento del formulario
+const guardarInfo = (e) => {
+  e.preventDefault(); 
+
+  // guardo los valores en variables no estoy seguro las ultimas 2
+  const nombre = document.getElementById('nombre').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').checked;
+  const esSocio = document.getElementById('esSocio').checked;
+  const noSocio = document.getElementById('noSocio').checked;
+
+  // genero un objeto con esas variables
+  // const socios = {
+  //   nombre:nombre,
+  //   email:email,
+  //   password:password,
+  //   esSocio:esSocio,
+    
+  // };
+  // busco en el storage y lo guardo en una constante
+  const listaSocios = localStorage.getItem('listaUsuarios'); 
+  // parseo la info, si no existe que guarde array vacio
+  const listaSociosParseada = JSON.parse(listaUsuarios) || []; 
+  // hago un push para agregar esta nueva info al array
+  listaSociosParseada.push(socios); 
+  // Lo convierto a string para guardarlo en storage
+  localStorage.setItem('listaUsuarios', JSON.stringify(listaSociosParseada)); 
+
+  // reseteo los datos que cargaron
+  formulario.reset();
+  // ejecuto función para mostrar cuando se agrega uno nuevo 
+  mostrarInfo(); // ejecuto función para mostrar cuando se agrega uno nuevo
+};
+
+const mostrarInfo = () => {
+  // me aseguro que no tenga nada al momento de mostrar la info
+  infoContenedor.innerHTML = ''; 
+  // guardo en una variable lo que tengo en el storage
+  const infoDesdeStorage = localStorage.getItem('listaUsuarios'); 
+
+  
+  
+  //Aca me re perdi Gonza
+  
+  
+  // si existe la info, que la muestre. Sino que muestre un mensaje del html
+  if (infoDesdeStorage) { 
+    // lo convierto a objeto para poder operar con JS
+    const infoParseada = JSON.parse(infoDesdeStorage); 
+    // hago un foreach() para iterar el array que obtengo del storage, para mostrar la info de cada usuario
+    infoParseada.forEach((user, indexDelUser) => { // el forEach devuelve el elemento, junto con el índice del mismo dentro del array 
+      // creo una nueva tarjeta (contenedor de la info del usuario)
+      const nuevaCard = document.createElement('div');
+      // agrego una clase, para el estilo
+      nuevaCard.className = "userCard";
+      // le agrego el contenido de la tarjeta, utilizo backticks para facilitar
+      nuevaCard.innerHTML = ` 
+        <h3>${user.nombre}</h3>
+        <p>${user.email}</p>
+        <p>${user.password}</p> 
+        <p>${user.esSocio ? 'Es Socio' : 'No Es Socio'}</p>
+        
+        <button type="button" onclick="borrarItemEspecifico(${indexDelUser})">Borrar Item</button>
+        
+      `
+      // aqui arriba no se si sirve traer el pass
+
+      // Le agrego al botón "borrar item" mediante el onclick, la función para borrar el item. Le paso como parámetro el índice del elemento actual.
+      // Con "user.programador" estoy haciendo un if ternario: Que muestre 'programador' si es true, y que muestre 'no es programador' si es false.
+      // Por último, agrego la tarjeta al contenedor de tarjetas.
+      infoContenedor.append(nuevaCard);
+    })  
+  } else {
+    infoContenedor.innerHTML = '<h2>No hay info para mostrar</h2>'; // mensaje para cuando no hay info
+  }
+}
+
+const borrarListaStorage = () => {
+  localStorage.removeItem('listaUsuarios'); // elimino el item donde guardaba la info en el storage
+
+  mostrarInfo(); // vuelvo a ejecutar para mostrar actualización
+}
+
+const borrarItemEspecifico = (indiceDelUsuario) => {
+  const infoDesdeStorage = localStorage.getItem('listaUsuarios'); // guardo en una variable lo que tengo en el storage
+  const infoParseada = JSON.parse(infoDesdeStorage); // lo convierto a objeto para poder operar con JS
+
+  if (infoParseada.length === 1) { // si hay un solo elemento dentro del array, borra todo el item del storage
+    borrarListaStorage();
+  } else { // si hay más de un elemento guardado, ejecuto lo siguiente
+    infoParseada.splice(indiceDelUsuario, 1); // ejecuto un splice para eliminar desde el indice, un espacio
+    localStorage.setItem('listaUsuarios', JSON.stringify(infoParseada)) // guardo el array actualizado
+    mostrarInfo(); // ejecuto función para mostrar la info actualizada  
+  }
+}
+
+// ---------------------------- Seteo eventos -----------------------------
+formulario.onsubmit = (e) => guardarInfo(e);
+botonMostrar.onclick = () => mostrarInfo();
+botonBorrar.onclick = () => borrarListaStorage();
+
+
+
+
+
+
+
+
+
 
 //Traje el contenedor de la tienda mediante el id lo entendi
 const contentIndumentaria = document.querySelector('#contentIndumentaria')
@@ -192,3 +310,4 @@ function botonComprarClick() {
   contenedorDeItems.innerHTML = '';
   updateShoppingCartTotal();
 }
+
