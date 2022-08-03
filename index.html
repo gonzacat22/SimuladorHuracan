@@ -23,29 +23,47 @@
 
         <nav >
             
-            <form id="usuarioFormulario" action="">
-                
-                <label for="nombre">Nombre</label>
-                <input type="text" id="name" required/>
-                <label for="email">E-mail</label>
+            <form id="usuarioFormulario" action=""></form>
+            <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="name" required/>
+                  </div>
+                  <div class="col">
+                    <label for="email">E-mail</label>
                 <input type="email" id="email" required/>
-                <label for="password">Password</label>
-                <input type="password" id="password" required/>
-                <div>
-                  <label for="esSocio">¿Es Socio?</label>
-                  <input type="checkbox" id="esSocio" />
-                  <label for="noSocio">¿Es Socio?</label>
-                  <input type="checkbox" id="noSocio" />
+                  </div>
                   
                 </div>
-                <button type="submit">Guardar</button>
-              </form>
-            
-              <button id="mostrandoInfoGuardada">Mostrar Info guardada</button>
-              <button id="borrarInfoGuardada">Borrar Info</button>
-              <div id="infoContenedor"></div>
-
-        </nav>
+                <div class="row">
+                  <div class="col">
+                    <label for="password">Password</label>
+                <input type="password" id="password" required/>
+                  </div>
+                  
+                  </div>
+                  <div class="col">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <label class="form-check-label" for="esSocio">¿Es Socio?</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <button type="submit">Guardar</button>
+                      </div>
+                      <div id="mostrandoInfoGuardada" class="form-check form-check-inline">
+                        <button type="submit">Mostrar Info guardada</button>
+                      </div>
+                      <div id="borrarInfoGuardada" class="form-check form-check-inline">
+                        <button type="submit">Borrar Info</button>
+                      </div>
+                      <div id="infoContenedor"></div>
+                      
+                  </div>
+                </div>
+              </div>
+            </form> 
+         </nav>
                  
     </header>
 
