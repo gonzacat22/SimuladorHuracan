@@ -19,15 +19,19 @@
     <header>
         <h1 class="text-center">TIENDA ONLINE LUMINOSA</h1>
         <img src="./img/logoHuracanNegroEstrella.png" alt="logo" width="60"></a>
-        <hr>
+        <span><div id="borrarInfoGuardada" class="form-check form-check-inline">
+            
+            <button class="item-button btn btn-success type="submit">Borrar Info</button>
+          </div></span>
+       
 
         <nav >
             
-            <form id="usuarioFormulario" action=""></form>
+            <form id="usuarioFormulario" action="" id="mostrandoInfoFormulario">
             <div class="container">
                 <div class="row">
                   <div class="col">
-                    <label for="nombre">Nombre</label>
+                    <label for="name">Nombre</label>
                     <input type="text" id="name" required/>
                   </div>
                   <div class="col">
@@ -45,18 +49,18 @@
                   </div>
                   <div class="col">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="false">
                         <label class="form-check-label" for="esSocio">¿Es Socio?</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <button type="submit">Guardar</button>
+                        <button class="item-button btn btn-success type="submit">Guardar</button>
+                        
                       </div>
-                      <div id="mostrandoInfoGuardada" class="form-check form-check-inline">
+                      <hr>
+                      <!-- <div id="mostrandoInfoGuardada" class="form-check form-check-inline">
                         <button type="submit">Mostrar Info guardada</button>
-                      </div>
-                      <div id="borrarInfoGuardada" class="form-check form-check-inline">
-                        <button type="submit">Borrar Info</button>
-                      </div>
+                      </div> -->
+                      
                       <div id="infoContenedor"></div>
                       
                   </div>
@@ -143,26 +147,7 @@
 
             <!-- TERMINA EL TOTAL -->
 
-            <!-- COMIENZA EL MODAL DE LA COMPRA -->
-            <div class="modal fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="comprarModalLabel">Gracias por su compra</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Retira tu compra por la sede</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <!-- finaleza el modal de la compra -->
 
 
@@ -191,6 +176,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>    
 
     <script src="./js/tienda.js"></script>
 
