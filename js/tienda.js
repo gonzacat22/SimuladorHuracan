@@ -79,7 +79,7 @@ const formulario = document.getElementById("usuarioFormulario");
 const guardarInfo = (e) => {
   e.preventDefault();
 
-  // guardo los valores en variables no estoy seguro las ultimas 2
+  // guardo los valores en variables
   //const id = document.getElementById("id").value;
   const nombre = document.getElementById("nombre").value;
   const email = document.getElementById("email").value;
@@ -109,6 +109,8 @@ const guardarInfo = (e) => {
   mostrarTienda();
 };
 
+//?Gonza pregunta: prodria colocar una promesa aqui? darle mas robustez con un evento futuro? onda si el usuario logueado es socio y si no catch error ejemplo un alert? No se como hacerlo
+
 // ---------------------------- Seteo eventos -----------------------------
 formulario.onsubmit = (e) => guardarInfo(e);
 
@@ -116,7 +118,7 @@ function cerrarSesion() {
   localStorage.removeItem("usuarioActual");
   location.reload();
 }
-//aca, o sale el alert o cierra la secion.
+//?Gonza comenta: aca, o sale el alert o cierra la sesión. no se como colocarlo bien
 
 // const btnCerrarSesion = document.getElementById("btnCerrarSesion");
 // btnCerrarSesion.addEventListener("click", cerrarSesion);
@@ -146,11 +148,11 @@ btnCerrarSesion.addEventListener("click", () => {
 function mostrarTienda() {
   const usuarioActual = localStorage.getItem("usuarioActual");
   const usuarioActualParseado = JSON.parse(usuarioActual);
-  //Traje el contenedor de la tienda mediante el id lo entendi
+  //Traje el contenedor de la tienda mediante el id
   const contentIndumentaria = document.querySelector("#contentIndumentaria");
   //aca itero el array de indumentaria
   indumentaria.forEach((item, indice) => {
-    //entendi que debia solo traer un div y luego dinamicamente js agrega todos
+    //traje la tarjeta completa del producto
     contentIndumentaria.innerHTML += `
                     <div class="col-12 col-md-6">
                       <div class="item shadow mb-4">
@@ -161,8 +163,8 @@ function mostrarTienda() {
                                 usuarioActualParseado.esSocio
                                   ? item.itemPrice
                                   : "Precio no disponible"
-                              }</h4>
-                              <button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button>
+                              }</h4> 
+                              <button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button> //?aca tambien deberia colocar el boton oculto para no socios por que cuando hace click  suma añadir carrito
                           </div>
                       </div>
                     </div>`;
@@ -215,7 +217,7 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
         ".shoppingCartItemQuantity"
       );
 
-      //esta funcion antes me da dolores de cabeza. Con el carrito vacio agredas 2 o mas del mismo producto y no lo suma en el carrito, luego si agregas otro producto distinto te suma todo
+      //?esta funcion antes me da dolores de cabeza. Con el carrito vacio agredas 2 o mas del mismo producto y no lo suma en el carrito, luego si agregas otro producto distinto te suma todo
 
       elementQuantity.value++;
       document.querySelector(".toast").toast("show");
@@ -227,7 +229,26 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
       //   return;
       // }
     }
+//?comentado por que si no, no me carga otro articulo
+//?tambien voy a usarlo en otra parte del proyecto general estaria para url a dominio futbol
+    // btnAgregaCarrito.onclick = () => {
+    //   Toastify({
+    //     text: `Agregaste ${carrito.length} unidades al carrito Luminuso`,
+    //     duration: 2000,
+    //     style: {
+    //       background: "linear-gradient(#f0d024 1px, #0f5f2b)",
+    //       color: "black",
+    //       width: "250px",
+    //       height: "100px",
+    //     },
+    //     offset: {
+    //       x: "10%",
+    //       y: 300,
+    //     },
+    //   }).showToast();
+    // };
   }
+
   const shoppingCartRow = document.createElement("div");
 
   const shoppingCartContent = `
@@ -314,3 +335,4 @@ function botonComprarClick() {
     position: "top-center",
   });
 }
+
