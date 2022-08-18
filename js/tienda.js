@@ -1,21 +1,21 @@
 //constantes para socios formulario
 const socios = [
   {
-    //id:1,
+    id:1,
     nombre: "Gonzalo",
     mail: "gonzalodurante22@hotmail.com",
     password: "gonza22",
     esSocio: true,
   },
   {
-    //id:2,
+    id:2,
     nombre: "Juan Ignacio",
     mail: "juanignacio294@gmail.com",
     password: "juan22",
     esSocio: true,
   },
   {
-    //id:3,
+    id:3,
     nombre: "Pedro",
     mail: "pedro294@gmail.com",
     password: "pedro22",
@@ -26,42 +26,42 @@ const socios = [
 //productos para no hardcodearlos
 const indumentaria = [
   {
-    //id:01,
+    id:01,
     tituloItem: "Cuota Social",
     itemPrice: 2200,
     itemImage: "./img/huracanCuotaSocial.jpg",
     btnAgregaCarrito: "Añadir Carrito",
   },
   {
-    //id:02,
+    id:02,
     tituloItem: "Camiseta de Juego",
     itemPrice: 1600,
     itemImage: "./img/huracanCamisetaJuego.jpg",
     btnAgregaCarrito: "Añadir Carrito",
   },
   {
-    //id:03,
+    id:03,
     tituloItem: "Pantalon de Juego",
     itemPrice: 1200,
     itemImage: "./img/huracanPantalonJuego.jpg",
     btnAgregaCarrito: "Añadir Carrito",
   },
   {
-    //id:04,
+    id:04,
     tituloItem: "Medias de juego",
     itemPrice: 900,
     itemImage: "./img/huracanMediasJuego.jpg",
     btnAgregaCarrito: "Añadir Carrito",
   },
   {
-    // id:05,
+    id:05,
     tituloItem: "Campera",
     itemPrice: 2500,
     itemImage: "./img/huracanCampera.jpg",
     btnAgregaCarrito: "Añadir Carrito",
   },
   {
-    //id:06,
+    id:06,
     tituloItem: "Pantalon Largo",
     itemPrice: 2400,
     itemImage: "./img/huracanPantalonLargo.jpg",
