@@ -68,6 +68,20 @@ const indumentaria = [
     btnAgregaCarrito: "Añadir Carrito",
   },
 ];
+                  //hasta aca llegue con el fetch Flor clavo un ternario complejo y me re perdi de lo que queria hacer 
+
+// const tarjetaindumentaria = document.querySelectorAll('indumentaria'),
+
+// const crearTarjetaIndumentaria = async ()=>{
+//      const muestraJson = await fetch('./js/data.json');
+//      const dataJson = await muestraJson.json();
+
+//      crearTarjetaIndumentaria.forEach((element,index) => {
+//       for(const item of dataJson){
+
+//       }
+//      })
+// }
 
 // seteo el localStorage con la info de los socios (array)
 localStorage.setItem("listaUsuarios", JSON.stringify(socios));
