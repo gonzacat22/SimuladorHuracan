@@ -1,6 +1,32 @@
+{
+    "usuarios":[
+        
+            {
+              "id":1,
+              "nombre": "Gonzalo",
+              "mail": "gonzalodurante22@hotmail.com",
+              "password": "gonza22",
+              "esSocio": true
+            },
+            {
+              "id":2,
+              "nombre": "Juan Ignacio",
+              "mail": "juanignacio294@gmail.com",
+              "password": "juan22",
+              "esSocio": true
+            },
+            {
+              "id":3,
+              "nombre": "Pedro",
+              "mail": "pedro294@gmail.com",
+              "password": "pedro22",
+              "esSocio": true
+            }
+          
 
+    ],
 
-    [
+    "productosTienda":[
         {
             "id": "01",
             "tituloItem": "Cuota Social",
@@ -46,3 +72,4 @@
 
     ]
     
+}

@@ -24,70 +24,77 @@ const socios = [
 ];
 
 //productos para no hardcodearlos
-const indumentaria = [
-  {
-    id:01,
-    tituloItem: "Cuota Social",
-    itemPrice: 2200,
-    itemImage: "./img/huracanCuotaSocial.jpg",
-    btnAgregaCarrito: "Añadir Carrito",
-  },
-  {
-    id:02,
-    tituloItem: "Camiseta de Juego",
-    itemPrice: 1600,
-    itemImage: "./img/huracanCamisetaJuego.jpg",
-    btnAgregaCarrito: "Añadir Carrito",
-  },
-  {
-    id:03,
-    tituloItem: "Pantalon de Juego",
-    itemPrice: 1200,
-    itemImage: "./img/huracanPantalonJuego.jpg",
-    btnAgregaCarrito: "Añadir Carrito",
-  },
-  {
-    id:04,
-    tituloItem: "Medias de juego",
-    itemPrice: 900,
-    itemImage: "./img/huracanMediasJuego.jpg",
-    btnAgregaCarrito: "Añadir Carrito",
-  },
-  {
-    id:05,
-    tituloItem: "Campera",
-    itemPrice: 2500,
-    itemImage: "./img/huracanCampera.jpg",
-    btnAgregaCarrito: "Añadir Carrito",
-  },
-  {
-    id:06,
-    tituloItem: "Pantalon Largo",
-    itemPrice: 2400,
-    itemImage: "./img/huracanPantalonLargo.jpg",
-    btnAgregaCarrito: "Añadir Carrito",
-  },
-];
-                  //hasta aca llegue con el fetch Flor clavo un ternario complejo y me re perdi de lo que queria hacer 
+// const indumentaria = [
+//   {
+//     id:01,
+//     tituloItem: "Cuota Social",
+//     itemPrice: 2200,
+//     itemImage: "./img/huracanCuotaSocial.jpg",
+//     btnAgregaCarrito: "Añadir Carrito",
+//   },
+//   {
+//     id:02,
+//     tituloItem: "Camiseta de Juego",
+//     itemPrice: 1600,
+//     itemImage: "./img/huracanCamisetaJuego.jpg",
+//     btnAgregaCarrito: "Añadir Carrito",
+//   },
+//   {
+//     id:03,
+//     tituloItem: "Pantalon de Juego",
+//     itemPrice: 1200,
+//     itemImage: "./img/huracanPantalonJuego.jpg",
+//     btnAgregaCarrito: "Añadir Carrito",
+//   },
+//   {
+//     id:04,
+//     tituloItem: "Medias de juego",
+//     itemPrice: 900,
+//     itemImage: "./img/huracanMediasJuego.jpg",
+//     btnAgregaCarrito: "Añadir Carrito",
+//   },
+//   {
+//     id:05,
+//     tituloItem: "Campera",
+//     itemPrice: 2500,
+//     itemImage: "./img/huracanCampera.jpg",
+//     btnAgregaCarrito: "Añadir Carrito",
+//   },
+//   {
+//     id:06,
+//     tituloItem: "Pantalon Largo",
+//     itemPrice: 2400,
+//     itemImage: "./img/huracanPantalonLargo.jpg",
+//     btnAgregaCarrito: "Añadir Carrito",
+//   },
+// ];
 
-// const tarjetaindumentaria = document.querySelectorAll('indumentaria'),
-
-// const crearTarjetaIndumentaria = async ()=>{
-//      const muestraJson = await fetch('./js/data.json');
-//      const dataJson = await muestraJson.json();
-
-//      crearTarjetaIndumentaria.forEach((element,index) => {
-//       for(const item of dataJson){
-
-//       }
-//      })
-// }
-
+function traerdata() {
+fetch('/js/data.json')
+  .then( (respuesta) => {
+   return respuesta.json();
+})
+.then((data) => {
+  mostrarTienda(data);
+})
+}
+// //?no funciona no me trae los usuarios, el otro de arriba genial
+// function traerdata() {
+//   fetch('/data.json')
+//     .then( (respuesta) => {
+//      return respuesta.json();
+//   })
+//   .then((data) => {
+//     ingresoUsuario(data.usuarios);
+//   })
+//   }
 // seteo el localStorage con la info de los socios (array)
+//aca esta mal la linea 93 tira error cuando tengo usuarios en json 
+//localStorage.setItem("listaUsuarios", JSON.stringify(data.usuarios));
 localStorage.setItem("listaUsuarios", JSON.stringify(socios));
 
 // guardo el formulario
-const formulario = document.getElementById("usuarioFormulario");
+const formulario = document.getElementById("usuarioFormularioRegistro");
 
 // paro el comportamiento del formulario
 const guardarInfo = (e) => {
@@ -120,10 +127,33 @@ const guardarInfo = (e) => {
   localStorage.setItem("usuarioActual", JSON.stringify(nuevoSocio));
 
   formulario.style = "display: none";
-  mostrarTienda();
+  traerdata();
 };
 
-//?Gonza pregunta: prodria colocar una promesa aqui? darle mas robustez con un evento futuro? onda si el usuario logueado es socio y si no catch error ejemplo un alert? No se como hacerlo
+const ingresoUsuario = (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  //si encuentra el usuario entonces valida abajo aca buscamos al socio mediante el email, si encontramos al socio con ese email verifica contraseña
+  //aca esta el error de la linea 92 algo hago mal con data,usuarios.find
+  const seEncuentraUsuario = data.usuarios.find(usuario => usuario.mail === email)
+  
+  if (seEncuentraUsuario) {
+    if (seEncuentraUsuario.password === password){
+      localStorage.setItem("usuarioActual", JSON.stringify(seEncuentraUsuario)); //lo seteamos de arriba
+    } else{
+      alert('Contraseña incorrecta'); //cambiar por swit
+    }
+  } else{
+    alert('Usuario Incorrecto ')
+  }
+
+  formularioIngreso.style = "display: none";
+  mostrarTienda();
+
+};
+
 
 // ---------------------------- Seteo eventos -----------------------------
 formulario.onsubmit = (e) => guardarInfo(e);
@@ -132,10 +162,10 @@ function cerrarSesion() {
   localStorage.removeItem("usuarioActual");
   location.reload();
 }
-//?Gonza comenta: aca, o sale el alert o cierra la sesión. no se como colocarlo bien
 
-// const btnCerrarSesion = document.getElementById("btnCerrarSesion");
-// btnCerrarSesion.addEventListener("click", cerrarSesion);
+
+const btnCerrarSesion = document.getElementById("btnCerrarSesion");
+//?aca en la pagina principal si le doy al boton cerrar secion funciona por mas que este fuera de sesion
 btnCerrarSesion.addEventListener("click", () => {
   Swal.fire({
     title: "Estas Cerrando Secion",
@@ -145,6 +175,7 @@ btnCerrarSesion.addEventListener("click", () => {
     cancelButtonText: "No Cerrar",
   }).then((result) => {
     if (result.isConfirmed) {
+      cerrarSesion();
       Swal.fire({
         title: "Vuelva Pronto",
         showClass: {
@@ -159,13 +190,13 @@ btnCerrarSesion.addEventListener("click", () => {
 });
 //
 
-function mostrarTienda() {
+function mostrarTienda(arrayIndumentaria) {
   const usuarioActual = localStorage.getItem("usuarioActual");
   const usuarioActualParseado = JSON.parse(usuarioActual);
   //Traje el contenedor de la tienda mediante el id
   const contentIndumentaria = document.querySelector("#contentIndumentaria");
   //aca itero el array de indumentaria
-  indumentaria.forEach((item, indice) => {
+  arrayIndumentaria.forEach((item, indice) => {
     //traje la tarjeta completa del producto
     contentIndumentaria.innerHTML += `
                     <div class="col-12 col-md-6">
@@ -173,12 +204,16 @@ function mostrarTienda() {
                           <h3 class="item-title">${item.tituloItem}</h3>
                           <img class="item-image" src=${item.itemImage}>
                           <div class="item-details" id="${indice}">
-                              <h4 class="item-price">$${
+                              <h4 class="item-price">${
                                 usuarioActualParseado.esSocio
                                   ? item.itemPrice
-                                  : "Precio no disponible"
+                                  : " "
                               }</h4> 
-                              <button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button> //?aca tambien deberia colocar el boton oculto para no socios por que cuando hace click  suma añadir carrito
+                              ${
+                                usuarioActualParseado.esSocio
+                                ?'<button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button>'
+                                : ' '
+                              } 
                           </div>
                       </div>
                     </div>`;
@@ -223,6 +258,23 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
   const elementsTitle = contenedorDeItems.getElementsByClassName(
     "shoppingCartItemTitle"
   );
+  //validamos el for, si me devuelve null entonces
+  if (!elementsTitle) {
+    updateShoppingCartTotal();
+    Toastify({ //esto no anda 
+      text: `Quitaste una unidad del carrito Luminuso`,
+      duration: 2000,
+      style: {
+        background: "linear-gradient(#f0d024 1px, #0f5f2b)",
+        color: "black",
+        width: "480px",
+        height: "50px",
+      },
+     
+    }).showToast();
+  }
+
+
   for (let i = 0; i < elementsTitle.length; i++) {
     if (elementsTitle[i].innerText === itemTitle) {
       let elementQuantity = elementsTitle[
@@ -230,37 +282,26 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
       ].parentElement.parentElement.parentElement.querySelector(
         ".shoppingCartItemQuantity"
       );
-
-      //?esta funcion antes me da dolores de cabeza. Con el carrito vacio agredas 2 o mas del mismo producto y no lo suma en el carrito, luego si agregas otro producto distinto te suma todo
+      Swal.fire('Agregaste otra unidad al carrito Luminuso')
+      // Toastify({
+      //       text: `Agregaste otra unidad al carrito Luminuso`,
+      //       duration: 2000,
+      //       gravity: "top", // `top` or `bottom`
+      //       position: "center", // `left`, `center` or `right`
+      //       style: {
+      //         background: "linear-gradient(#f0d024 1px, #0f5f2b)",
+      //         color: "black",
+      //         width: "480px",
+      //         height: "50px",
+      //       },
+            
+      //     }).showToast();
 
       elementQuantity.value++;
-      document.querySelector(".toast").toast("show");
       updateShoppingCartTotal();
       return;
-      //   elementQuantity.value++;
-      //   $(".toast").toast("show");
-      //   updateShoppingCartTotal();
-      //   return;
-      // }
-    }
-//?comentado por que si no, no me carga otro articulo
-//?tambien voy a usarlo en otra parte del proyecto general estaria para url a dominio futbol
-    // btnAgregaCarrito.onclick = () => {
-    //   Toastify({
-    //     text: `Agregaste ${carrito.length} unidades al carrito Luminuso`,
-    //     duration: 2000,
-    //     style: {
-    //       background: "linear-gradient(#f0d024 1px, #0f5f2b)",
-    //       color: "black",
-    //       width: "250px",
-    //       height: "100px",
-    //     },
-    //     offset: {
-    //       x: "10%",
-    //       y: 300,
-    //     },
-    //   }).showToast();
-    // };
+      }
+
   }
 
   const shoppingCartRow = document.createElement("div");
