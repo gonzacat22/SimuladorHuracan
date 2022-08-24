@@ -23,7 +23,7 @@ const socios = [
   },
 ];
 
-//productos para no hardcodearlos
+//?productos para no hardcodearlos estos estan el el json los traemos de alla
 // const indumentaria = [
 //   {
 //     id:01,
@@ -201,6 +201,7 @@ function mostrarTienda(arrayIndumentaria) {
                                   ? '<button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button>'
                                   : " "
                               } 
+                              
                           </div>
                       </div>
                     </div>`;
@@ -257,7 +258,14 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
       ].parentElement.parentElement.parentElement.querySelector(
         ".shoppingCartItemQuantity"
       );
-      Swal.fire("Agregaste otra unidad al carrito Luminuso");
+      // Swal.fire("Agregaste otra unidad al carrito Luminuso");
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Agregaste otra unidad al carrito Luminuso',
+        showConfirmButton: false,
+        timer: 1500
+      })
 
       elementQuantity.value++;
       updateShoppingCartTotal();
