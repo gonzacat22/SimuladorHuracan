@@ -1,21 +1,21 @@
 //constantes para socios formulario
 const socios = [
   {
-    id:1,
+    id: 1,
     nombre: "Gonzalo",
     mail: "gonzalodurante22@hotmail.com",
     password: "gonza22",
     esSocio: true,
   },
   {
-    id:2,
+    id: 2,
     nombre: "Juan Ignacio",
     mail: "juanignacio294@gmail.com",
     password: "juan22",
     esSocio: true,
   },
   {
-    id:3,
+    id: 3,
     nombre: "Pedro",
     mail: "pedro294@gmail.com",
     password: "pedro22",
@@ -70,27 +70,15 @@ const socios = [
 // ];
 
 function traerdata() {
-fetch('/js/data.json')
-  .then( (respuesta) => {
-   return respuesta.json();
-})
-.then((data) => {
-  mostrarTienda(data);
-})
+  fetch("/js/data.json")
+    .then((respuesta) => {
+      return respuesta.json();
+    })
+    .then((data) => {
+      mostrarTienda(data);
+    });
 }
-// //?no funciona no me trae los usuarios, el otro de arriba genial
-// function traerdata() {
-//   fetch('/data.json')
-//     .then( (respuesta) => {
-//      return respuesta.json();
-//   })
-//   .then((data) => {
-//     ingresoUsuario(data.usuarios);
-//   })
-//   }
-// seteo el localStorage con la info de los socios (array)
-//aca esta mal la linea 93 tira error cuando tengo usuarios en json 
-//localStorage.setItem("listaUsuarios", JSON.stringify(data.usuarios));
+
 localStorage.setItem("listaUsuarios", JSON.stringify(socios));
 
 // guardo el formulario
@@ -137,23 +125,23 @@ const ingresoUsuario = (e) => {
   const password = document.getElementById("password").value;
   //si encuentra el usuario entonces valida abajo aca buscamos al socio mediante el email, si encontramos al socio con ese email verifica contraseña
   //aca esta el error de la linea 92 algo hago mal con data,usuarios.find
-  const seEncuentraUsuario = data.usuarios.find(usuario => usuario.mail === email)
-  
+  const seEncuentraUsuario = data.usuarios.find(
+    (usuario) => usuario.mail === email
+  );
+
   if (seEncuentraUsuario) {
-    if (seEncuentraUsuario.password === password){
+    if (seEncuentraUsuario.password === password) {
       localStorage.setItem("usuarioActual", JSON.stringify(seEncuentraUsuario)); //lo seteamos de arriba
-    } else{
-      alert('Contraseña incorrecta'); //cambiar por swit
+    } else {
+      alert("Contraseña incorrecta"); //cambiar por swit
     }
-  } else{
-    alert('Usuario Incorrecto ')
+  } else {
+    alert("Usuario Incorrecto ");
   }
 
   formularioIngreso.style = "display: none";
   mostrarTienda();
-
 };
-
 
 // ---------------------------- Seteo eventos -----------------------------
 formulario.onsubmit = (e) => guardarInfo(e);
@@ -162,7 +150,6 @@ function cerrarSesion() {
   localStorage.removeItem("usuarioActual");
   location.reload();
 }
-
 
 const btnCerrarSesion = document.getElementById("btnCerrarSesion");
 //?aca en la pagina principal si le doy al boton cerrar secion funciona por mas que este fuera de sesion
@@ -211,8 +198,8 @@ function mostrarTienda(arrayIndumentaria) {
                               }</h4> 
                               ${
                                 usuarioActualParseado.esSocio
-                                ?'<button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button>'
-                                : ' '
+                                  ? '<button class="item-button btn btn-primary agregaCarrito">AÑADIR AL CARRITO</button>'
+                                  : " "
                               } 
                           </div>
                       </div>
@@ -261,19 +248,7 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
   //validamos el for, si me devuelve null entonces
   if (!elementsTitle) {
     updateShoppingCartTotal();
-    Toastify({ //esto no anda 
-      text: `Quitaste una unidad del carrito Luminuso`,
-      duration: 2000,
-      style: {
-        background: "linear-gradient(#f0d024 1px, #0f5f2b)",
-        color: "black",
-        width: "480px",
-        height: "50px",
-      },
-     
-    }).showToast();
   }
-
 
   for (let i = 0; i < elementsTitle.length; i++) {
     if (elementsTitle[i].innerText === itemTitle) {
@@ -282,26 +257,12 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
       ].parentElement.parentElement.parentElement.querySelector(
         ".shoppingCartItemQuantity"
       );
-      Swal.fire('Agregaste otra unidad al carrito Luminuso')
-      // Toastify({
-      //       text: `Agregaste otra unidad al carrito Luminuso`,
-      //       duration: 2000,
-      //       gravity: "top", // `top` or `bottom`
-      //       position: "center", // `left`, `center` or `right`
-      //       style: {
-      //         background: "linear-gradient(#f0d024 1px, #0f5f2b)",
-      //         color: "black",
-      //         width: "480px",
-      //         height: "50px",
-      //       },
-            
-      //     }).showToast();
+      Swal.fire("Agregaste otra unidad al carrito Luminuso");
 
       elementQuantity.value++;
       updateShoppingCartTotal();
       return;
-      }
-
+    }
   }
 
   const shoppingCartRow = document.createElement("div");
@@ -390,4 +351,3 @@ function botonComprarClick() {
     position: "top-center",
   });
 }
-
