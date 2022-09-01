@@ -23,7 +23,7 @@ const socios = [
   },
 ];
 
-//?productos para no hardcodearlos estos estan el el json los traemos de alla
+//?productos para no hardcodearlos estos estan el el json los traemos de ahi
 // const indumentaria = [
 //   {
 //     id:01,
@@ -124,7 +124,6 @@ const ingresoUsuario = (e) => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   //si encuentra el usuario entonces valida abajo aca buscamos al socio mediante el email, si encontramos al socio con ese email verifica contraseña
-  //aca esta el error de la linea 92 algo hago mal con data,usuarios.find
   const seEncuentraUsuario = data.usuarios.find(
     (usuario) => usuario.mail === email
   );
@@ -133,10 +132,10 @@ const ingresoUsuario = (e) => {
     if (seEncuentraUsuario.password === password) {
       localStorage.setItem("usuarioActual", JSON.stringify(seEncuentraUsuario)); //lo seteamos de arriba
     } else {
-      alert("Contraseña incorrecta"); //cambiar por swit
+      Swal.fire("Contraseña incorrecta");
     }
   } else {
-    alert("Usuario Incorrecto ");
+    Swal.fire("Usuario incorrecto");
   }
 
   formularioIngreso.style = "display: none";
@@ -152,7 +151,6 @@ function cerrarSesion() {
 }
 
 const btnCerrarSesion = document.getElementById("btnCerrarSesion");
-//?aca en la pagina principal si le doy al boton cerrar secion funciona por mas que este fuera de sesion
 btnCerrarSesion.addEventListener("click", () => {
   Swal.fire({
     title: "Estas Cerrando Secion",
@@ -175,7 +173,6 @@ btnCerrarSesion.addEventListener("click", () => {
     }
   });
 });
-//
 
 function mostrarTienda(arrayIndumentaria) {
   const usuarioActual = localStorage.getItem("usuarioActual");
@@ -260,12 +257,12 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
       );
       // Swal.fire("Agregaste otra unidad al carrito Luminuso");
       Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Agregaste otra unidad al carrito Luminuso',
+        position: "top-end",
+        icon: "success",
+        title: "Agregaste otra unidad al carrito Luminuso",
         showConfirmButton: false,
-        timer: 1500
-      })
+        timer: 1500,
+      });
 
       elementQuantity.value++;
       updateShoppingCartTotal();
